@@ -7,7 +7,7 @@
    bool ipv6: si queremos un socket para IPv6
  */
 Socket::Socket( char type, bool ipv6 ){
-
+   
 }
 
 
