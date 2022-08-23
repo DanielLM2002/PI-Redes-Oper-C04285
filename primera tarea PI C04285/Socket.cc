@@ -9,11 +9,11 @@
    bool ipv6: si queremos un socket para IPv6
  */
 Socket::Socket( char type, bool ipv6 ){
-   int socketNew = -1;
+   int idSocket = -1;
    if (type == 's') {
-      int socketNew = socket(AF_INET, SOCK_STREAM,0);
+      this -> idSocket = socket(AF_INET, SOCK_STREAM,0);
    } else {
-      int socketNew = socket(AF_INET,SOCK_DGRAM,0);
+      this -> idSocket = socket(AF_INET,SOCK_DGRAM,0);
    }
 }
 
@@ -24,7 +24,8 @@ Socket::~Socket(){
 
 
 void Socket::Close(){
-    
+   this->~Socket();
+
 }
 
 /*
@@ -33,7 +34,6 @@ void Socket::Close(){
  */
 int Socket::Connect( const char * hostip, int port ) {
 
-   return -1;
 
 }
 
