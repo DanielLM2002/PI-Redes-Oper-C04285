@@ -4,7 +4,9 @@
 #include <sys/socket.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <netinet/in.h>
+#include <arpa/inet.h>
 
 /* 
    char tipo: el tipo de socket que quiere definir
@@ -43,7 +45,7 @@ int Socket::Connect( const char * hostip, int port ) {
    host4.sin_family = AF_INET;
    inet_pton( AF_INET, hostip, &host4.sin_addr );
    host4.sin_port = htons( port );
-   st = connect( idSocket, (sockaddr *) host4, sizeof( host4 ) );
+   int st = connect( idSocket, (sockaddr *) &host4, sizeof( host4 ) );
    if ( -1 == st ) {
       perror( "Socket::Connect" );
       exit( 2 );
