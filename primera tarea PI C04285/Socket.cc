@@ -1,4 +1,6 @@
 #include "Socket.h"
+#include <sys/types.h>
+#include <sys/socket.h>
 
 /* 
    char tipo: el tipo de socket que quiere definir
@@ -7,17 +9,22 @@
    bool ipv6: si queremos un socket para IPv6
  */
 Socket::Socket( char type, bool ipv6 ){
-   
+   int socketNew = -1;
+   if (type == 's') {
+      int socketNew = socket(AF_INET, SOCK_STREAM,0);
+   } else {
+      int socketNew = socket(AF_INET,SOCK_DGRAM,0);
+   }
 }
 
 
 Socket::~Socket(){
-    Close();
+   this->Close();
 }
 
 
 void Socket::Close(){
-
+    
 }
 
 /*
