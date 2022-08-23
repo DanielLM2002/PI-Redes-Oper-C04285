@@ -32,6 +32,7 @@ class Socket{
         int idSocket;
         int port;
         bool ipv6;
+        int resultado;
 };
 
 #endif
