@@ -1,12 +1,5 @@
 #include "Socket.h"
-#define default_port 8080
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
+
 
 /* 
    char tipo: el tipo de socket que quiere definir
@@ -50,7 +43,7 @@ int Socket::Connect( const char * hostip, int port ) {
       perror( "Socket::Connect" );
       exit( 2 );
    }
-
+   return st;
 }
 
 
