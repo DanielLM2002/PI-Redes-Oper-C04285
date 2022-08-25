@@ -12,10 +12,13 @@ Socket::Socket( char type, bool ipv6 ){
    this -> ipv6 = ipv6;
    this -> idSocket = -1;
    if (!this -> ipv6) {
-
+      this -> idSocket = type == 's' ? socket(AF_INET, SOCK_STREAM, 0)
+      :socket(AF_INET, SOCK_DGRAM, 0);
+   } else {
+      this -> idSocket = type == 's' ? socket(AF_INET6, SOCK_STREAM,0)
+      :socket(AF_INET6, SOCK_DGRAM, 0);
    }
 }
-
 
 Socket::~Socket(){
    this->Close();
@@ -23,7 +26,7 @@ Socket::~Socket(){
 
 
 void Socket::Close(){
-   this->~Socket();
+   close(this->idSocket);
 
 }
 
@@ -33,11 +36,11 @@ void Socket::Close(){
  */
 int Socket::Connect( const char * hostip, int port ) {
    struct sockaddr_in  host4;
-   memset( (char *) &host4, 0, sizeof( host4 ) );
+   memset(reinterpret_cast <char *>(&host4), 0, sizeof(host4));
    host4.sin_family = AF_INET;
-   inet_pton( AF_INET, hostip, &host4.sin_addr );
+   inet_pton(AF_INET, hostip, &host4.sin_addr );
    host4.sin_port = htons( port );
-   int st = connect( idSocket, (sockaddr *) &host4, sizeof( host4 ) );
+   int st = connect(this->idSocket, reinterpret_cast<sockaddr *>(&host4), sizeof(host4));
    if ( -1 == st ) {
       perror( "Socket::Connect" );
       exit( 2 );
@@ -57,17 +60,13 @@ int Socket::Connect( const char *host, const char *service ) {
 }
 
 
-int Socket::Read( char *text, int len ) {
-
-   return -1;
-
+int Socket::Read( char* text, int len ) {
+   return read(this->idSocket, text, len);
 }
 
 
-int Socket::Write( const char *text ) {
-
-   return -1;
-
+int Socket::Write( const char* text ) {
+   return write(this->idSocket, text, strlen(text));
 }
 
 
