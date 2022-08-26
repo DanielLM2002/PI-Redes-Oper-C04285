@@ -22,5 +22,6 @@ int main( int argc, char * argv[] ) {
    s.Write(  request );
    while(s.Read(a,512)!= 0){
       printf( "%s\n", a);
+      memset(a, 0, 512);
    }
 }
