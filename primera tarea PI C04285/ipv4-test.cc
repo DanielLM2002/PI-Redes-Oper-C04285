@@ -14,7 +14,7 @@
 int main( int argc, char * argv[] ) {
    const char * os = "http://os.ecci.ucr.ac.cr/";
    const char * osn = "163.178.104.187";
-   const char * request = "GET /futbol/2018/clasificacion.txt HTTP/1.1\r\nhost: redes.ecci\r\n\r\n";
+   const char * request = "GET /futbol/2018/world-cup-2018.json HTTP/1.1\r\nhost: redes.ecci\r\n\r\n";
 
    Socket s( 's' );	// Create a new stream socket for IPv4
    char a[512];

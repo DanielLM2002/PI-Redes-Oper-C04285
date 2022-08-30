@@ -82,27 +82,27 @@ int Socket::Listen( int queue ) {
 
 int Socket::Bind( int port ) {
 
-    return -1;
+   return -1;
 
 }
 
 
 Socket * Socket::Accept(){
 
-    return (Socket *) 0;
+   return (Socket *) 0;
 
 }
 
 
 int Socket::Shutdown( int mode ) {
 
-    return -1;
+   return -1;
 
 }
 
 
 void Socket::SetIDSocket(int id){
 
-    idSocket = id;
+   idSocket = id;
 
 }
