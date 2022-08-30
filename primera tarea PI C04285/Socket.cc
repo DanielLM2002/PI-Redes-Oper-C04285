@@ -72,7 +72,10 @@ int Socket::Write( const char* text ) {
 
 int Socket::Listen( int queue ) {
 
-    return -1;
+   if(listen(this->idSocket,queue)==-1){
+      std::cerr<<strerror(errno)<<std::endl;
+   }
+   return errno;
 
 }
 
