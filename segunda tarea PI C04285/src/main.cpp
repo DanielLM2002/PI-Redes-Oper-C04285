@@ -1,4 +1,3 @@
-
 #define IPV4
 #define SIZE 1024
 
@@ -36,21 +35,5 @@ int main(int argc, char * argv[]) {
   //  memset( a, 0, SIZE );
   //}
   //printf( "%s\n", a );
-}
-#endif
-
-#ifdef IPV6
-int main( int argc, char * argv[] ) {
-  const char* os = "fe80::194d:4e78:60c:fedc%eno1";
-  const char* request = "GET / HTTP/1.1\r\nhost: redes.ecci\r\n\r\n";
-
-  Socket s('s', true);
-  char a[512];
-
-  memset(a, 0, 512);
-  s.Connect(os, (char *) "http");
-  s.Write(request);
-  s.Read(a, 512);
-  printf("%s\n", a);
 }
 #endif
