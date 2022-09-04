@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "Socket.hpp"
+#include "Socket.h"
 
 #ifdef IPV4
 int main(int argc, char * argv[]) {
